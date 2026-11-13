@@ -1,6 +1,6 @@
 # 🦇 Batcoin
 
-Aplicativo de controle financeiro pessoal para casais. Reúne as contas fixas, parceladas e divididas dos dois em um só lugar, mostra o que vence em cada mês e o que ficou em atraso. O visual é personalizável, cada pessoa pode ajustar as cores e salvar os próprios temas.
+Aplicativo de controle financeiro pessoal para casais. Reúne as contas fixas, parceladas e divididas dos dois em um só lugar, mostra o que vence em cada mês e o que ficou em atraso. O visual é personalizável: cada pessoa pode ajustar as cores e salvar os próprios temas.
 
 ## 📱 Instalação
 
