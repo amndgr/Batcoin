@@ -43,6 +43,9 @@ p{margin:0}
 .tema-atual{font-family:var(--display);font-size:calc(14px * var(--escala));color:var(--acento-texto)}
 
 /* ---------- celular ---------- */
+/* sem barras de rolagem dentro do app (no celular elas já somem sozinhas) */
+.app *{scrollbar-width:none}
+.app *::-webkit-scrollbar{display:none}
 .celular{width:min(400px,100%);height:820px;border-radius:44px;border:10px solid var(--nav);overflow:hidden;position:relative;background:var(--fundo) var(--padrao);box-shadow:8px 8px 0 var(--acento);transition:background .3s}
 @media (max-width:480px){.celular{border-width:3px;border-radius:26px;box-shadow:none}}
 .app{position:absolute;inset:0;display:flex;flex-direction:column}
@@ -58,6 +61,10 @@ p{margin:0}
 .ola{flex:1;min-width:0}
 .ola small{display:block;font-family:var(--display);font-size:calc(12px * var(--escala));color:var(--acento-texto)}
 .ola b{font-family:var(--display);font-weight:500;font-size:calc(22px * var(--escala))}
+.ola-mes{display:block;margin-top:2px}
+.ola-mes .mes-atual{margin:0;font-size:calc(11.5px * var(--escala));gap:6px}
+.ola-mes .mes-atual.outro{justify-content:flex-start;gap:4px 10px}
+.ola-mes .link{font-size:inherit}
 .icone-btn{all:unset;cursor:pointer;width:36px;height:36px;border-radius:var(--raio-p);display:grid;place-items:center;background:var(--sup);border:var(--borda) solid var(--contorno);box-shadow:var(--sombra-btn)}
 .meses{position:relative;z-index:1;display:flex;gap:6px;overflow-x:auto;padding:18px 16px 8px;scrollbar-width:none}
 .meses::-webkit-scrollbar{display:none}
@@ -261,6 +268,19 @@ input[type="range"]::-moz-range-thumb{width:20px;height:22px;border-radius:var(-
 .opcoes{display:flex;gap:8px;flex-wrap:wrap}
 .opcao{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:12px;border:2px solid var(--contorno);background:var(--sup);font-size:13px}
 .opcao[aria-pressed="true"]{background:var(--destaque);box-shadow:3px 3px 0 var(--contorno)}
+.opcoes-enfeites{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.opcao-enfeite{box-sizing:border-box;min-width:0;padding:6px 9px;gap:9px;line-height:1.15}
+.ic-enfeite{flex:none;width:30px;height:30px;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:8px;background:var(--sup2)}
+.ic-enfeite > *{position:static !important;inset:auto !important;transform:none !important;margin:0 !important;max-width:26px !important;max-height:26px !important;width:24px !important;height:auto !important;animation:none !important;opacity:1 !important}
+.ic-enfeite .ic-txt{width:auto !important;max-width:none !important;font-size:9px;white-space:nowrap;color:var(--texto)}
+.ic-babado{display:block;width:26px !important;height:10px !important;background:radial-gradient(circle at 50% 0,var(--sup) 3.5px,var(--contorno) 4px,var(--contorno) 5px,transparent 5.5px) 0 0/8px 10px repeat-x}
+.ic-renda{display:block;width:26px !important;height:11px !important;background:var(--renda-url) repeat-x}
+.criador-previa{max-height:min(46vh,400px);overflow-y:auto;overflow-x:hidden;grid-template-columns:minmax(0,1fr);overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.previa-rolo{pointer-events:none;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding:0 4px 8px;min-width:0;zoom:.86}
+.previa-rolo > *{min-width:0;max-width:100%}
+.salvo-card{position:relative;display:grid}
+.salvo-card .apagar-salvo{position:absolute;top:-7px;right:-7px;z-index:2;min-width:24px;height:24px;padding:0 6px;border-radius:99px;background:var(--sup);border:var(--borda) solid var(--contorno);display:grid;place-items:center;font-size:13px;color:var(--apagado);cursor:pointer}
+.salvo-card .apagar-salvo.confirmar{background:var(--coral);color:#fff;border-color:var(--coral);font-size:11px}
 .opcao .bolas{display:flex}
 .opcao .bolas i{width:15px;height:15px;border-radius:50%;border:1.5px solid #0004;margin-left:-4px}
 .opcao .bolas i:first-child{margin-left:0}
@@ -280,6 +300,30 @@ input[type="range"]::-moz-range-thumb{width:20px;height:22px;border-radius:var(-
 .campo-saudacao{max-width:280px}
 .opcao small{color:var(--apagado)}
 .app .cartoes{grid-template-columns:1fr 1fr}
+/* animação dos botões: afunda ao tocar e dá um pulinho de mola ao escolher */
+:root{--mola:cubic-bezier(.34,1.56,.64,1);--suave:cubic-bezier(.22,1,.36,1)}
+button,.item,.subir{transition:transform .24s var(--suave),box-shadow .24s var(--suave),background-color .24s,color .24s,opacity .24s,filter .24s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+button:active,.subir:active{transform:scale(.94);transition-duration:.09s}
+.item:active{transform:scale(.98);transition-duration:.09s}
+.btn:active,.icone-btn:active,.opcao[aria-pressed="true"]:active,.mes-chip[aria-pressed="true"]:active,.seg button[aria-pressed="true"]:active{transform:translate(2px,2px) scale(.97);box-shadow:0 0 0 transparent}
+.nav button:active{transform:none}
+.nav button svg,.nav .mais{transition:transform .24s var(--suave),box-shadow .24s var(--suave)}
+.nav button:active svg{transform:scale(.85)}
+.nav button:active .mais{transform:translate(2px,2px) scale(.94);box-shadow:0 0 0 transparent}
+.nav button:active .mais svg{transform:rotate(90deg)}
+.link:active{opacity:.55;transform:none}
+.janela.nova{animation:sobe .32s var(--suave)}
+@keyframes sobe{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@keyframes pulo{0%{transform:scale(.92)}55%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes pulo-coracao{0%{transform:scale(.55)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes chave-liga{from{transform:translateX(0)}to{transform:translateX(22px)}}
+@keyframes chave-desliga{from{transform:translateX(22px)}to{transform:translateX(0)}}
+.pulou{animation:pulo .4s var(--mola)}
+.check.pulou,.nav button.pulou,.chave.pulou{animation:none}
+.check.pulou svg{animation:pulo-coracao .45s var(--mola)}
+.nav button.pulou svg{animation:pulo .4s var(--mola)}
+.chave.pulou[aria-checked="true"]::after{animation:chave-liga .28s var(--mola)}
+.chave.pulou[aria-checked="false"]::after{animation:chave-desliga .28s var(--mola)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 .vistas button{padding:6px 4px;font-size:calc(12px * var(--escala))}
 .cats{display:grid;gap:12px}
@@ -490,3 +534,9 @@ main{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
 .ola-quem{display:grid;gap:10px}
 .ola-quem .btn{width:100%}
 .offline{position:absolute;top:calc(6px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:4;font-size:11px;padding:1px 8px;border-radius:99px;background:var(--sup);border:1.5px solid var(--contorno);color:var(--apagado)}
+/* app parado: sem arrastar para os lados nem efeito elástico; só a lista rola na vertical */
+html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;position:fixed;inset:0;margin:0}
+.app,#conteudo,.janela,.janela-corpo{overflow-x:hidden;overflow-x:clip}
+#conteudo,.janela-corpo,.criador-previa{overscroll-behavior:contain}
+input,select,textarea{font-size:16px !important}
+*{-webkit-tap-highlight-color:transparent}

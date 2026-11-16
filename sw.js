@@ -4,15 +4,15 @@
  * Gerado por montar_app.py: a versão muda sozinha quando algum arquivo do app muda,
  * e aí o celular baixa a versão nova e passa a usá-la na próxima abertura.
  */
-var VERSAO = '40543a9586';
+var VERSAO = '2c122ac177';
 var CACHE_APP = 'batcoin-' + VERSAO;
 var CACHE_FONTES = 'batcoin-fontes';
 var ARQUIVOS = [
   "./",
   "index.html",
-  "app.css?v=40543a9586",
-  "dados.js?v=40543a9586",
-  "app.js?v=40543a9586",
+  "app.css?v=2c122ac177",
+  "dados.js?v=2c122ac177",
+  "app.js?v=2c122ac177",
   "manifest.webmanifest",
   "favicon.png",
   "apple-touch-icon.png",

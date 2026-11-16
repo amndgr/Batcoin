@@ -13,9 +13,11 @@ Depois da primeira abertura, o aplicativo funciona sem internet.
 
 ## 💾 Dados
 
-Nesta versão, os dados ficam salvos apenas no aparelho (localStorage), e cada celular mantém os seus. Para fazer uma cópia de segurança, acesse Tema > cópia de segurança, que gera um arquivo .json.
+Os dados ficam salvos no aparelho (localStorage) e são sincronizados com uma planilha do Google Sheets por meio de um App da Web do Apps Script. A tela abre com os dados do aparelho e é atualizada quando a planilha responde. Sem internet, as alterações ficam no aparelho e são enviadas quando a conexão volta.
 
-A próxima etapa é a sincronização com uma planilha do Google Sheets via Apps Script, para que os dois aparelhos compartilhem as mesmas informações.
+A planilha guarda os dados completos do app em uma aba oculta e reescreve as abas de cada pessoa a cada alteração, com os meses pagos marcados com ✓. Quando os dois aparelhos alteram dados ao mesmo tempo, as versões são combinadas item a item, sem perda de informação.
+
+Para conectar um aparelho, gere o código de conexão na planilha (Gerenciar Contas > App Batcoin > Conectar o app) e cole-o no app em Tema > planilha. Também é possível baixar uma cópia de segurança em Tema > cópia de segurança, que gera um arquivo .json.
 
 ## 🗂️ Estrutura
 
@@ -30,5 +32,4 @@ Os arquivos são gerados por um script de build a partir do protótipo. A cada a
 
 ## 📝 Próximos passos
 
-- Sincronização com o Google Sheets
 - Notificações de vencimento
